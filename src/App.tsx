@@ -10,22 +10,13 @@ class App extends React.Component <{}, IState>{
   public state={
     starting:0
   }
-  public render() {
-    return (
-      <React.Fragment>
-        <Helper counter={this.state.starting} />
-        <button onClick={this.increment}>Increment</button>
-        <button onClick={this.decrement}>Decrement</button>
-      </React.Fragment>
-    );
-  }
-  private increment = () => {
+  public increment = () => {
     this.setState(prevState => {
       return {starting: prevState.starting+1};
     });
   } 
 
-  private decrement = () => {
+  public decrement = () => {
     this.setState(prevState => {
       if(prevState.starting>0){
         return {starting: prevState.starting-1};
@@ -34,6 +25,16 @@ class App extends React.Component <{}, IState>{
         return {starting:prevState.starting}
       }
     });
+  }
+
+  public render() {
+    return (
+      <React.Fragment>
+        <Helper counter={this.state.starting} />
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
+      </React.Fragment>
+    );
   }
 }
 
