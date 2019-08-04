@@ -6,7 +6,7 @@ interface INerFace{
 }
 const Helper = (props: INerFace)=>{
     return  (
-        <p>{props.counter}</p>
+        <h1>{props.counter}</h1>
     )
 }
 

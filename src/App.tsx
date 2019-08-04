@@ -2,13 +2,38 @@ import * as React from 'react';
 import './App.css';
 import Helper from './components/Helper';
 
-class App extends React.Component {
+interface IState{
+  starting: number;
+}
+
+class App extends React.Component <{}, IState>{
+  public state={
+    starting:0
+  }
   public render() {
     return (
       <React.Fragment>
-        <Helper counter={1} />
+        <Helper counter={this.state.starting} />
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
       </React.Fragment>
     );
+  }
+  private increment = () => {
+    this.setState(prevState => {
+      return {starting: prevState.starting+1};
+    });
+  } 
+
+  private decrement = () => {
+    this.setState(prevState => {
+      if(prevState.starting>0){
+        return {starting: prevState.starting-1};
+      }
+      else{
+        return {starting:prevState.starting}
+      }
+    });
   }
 }
 
